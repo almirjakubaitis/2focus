@@ -59,7 +59,11 @@
   transition: background-color 0.3s;
 }
 
-
+.countdownButtonContainerGrid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1rem;
+}
 
 /* .countdownButton:not(:disable):hover {
   background: var(--blue-dark);
@@ -74,11 +78,24 @@
   color: var(--title);
 }
 
+
 .countdownButtonActive:hover { 
   background: var(--red);
-  color: var(--white);
-  
+  color: var(--white);  
 }
+
+
+.countdownButtonContinue { 
+  background: var(--white);
+  color: var(--title);
+}
+
+.countdownButtonContinue:hover { 
+  background: var(--blue);
+  color: var(--white);  
+}
+
+
 
 .countdownButton:disabled {
   background: var(--white);
