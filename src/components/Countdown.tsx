@@ -1,95 +1,34 @@
-import { useCallback, useEffect, useState, useContext } from 'react'
+import { useContext } from 'react'
 
-import { ChallengesContext } from '../contexts/ChallengesContext';
+
+import { CountdownContext } from '../contexts/CountdownContext';
 import styles from '../styles/components/Countdown.module.css'
 
 
 
 export function Countdown() {
 
-  let countdownTimeout: NodeJS.Timeout;
-  const inicialTime = (25 * 60);
+  const { 
+    minutes,
+    seconds,
+    isFinished,
+    isActive, 
+    isPaused,
+    time,
+    inicialTime,
+    startCountdown,
+    resetCountdown,
+    pauseCountdown,
+    continueCountdown
 
-  const { startNewChallenge } = useContext(ChallengesContext);
+  } = useContext(CountdownContext);
 
-  const [time, setTime] = useState(inicialTime);
-  const [isActive, setIsActive] = useState(false);
-  const [isFinished, setIsFinished] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
- 
 
-  const minutes = Math.floor(time / 60); // arredonda para baixo 24:59 - 24
-  const seconds = time % 60; // pega o resto da divisão, no caso os segundos
-
-  const [minuteLeft, minuteRight] = String(minutes).padStart(2,'0').split(''); // split devolve um array
+  const [minuteLeft, minuteRight] = String(minutes).padStart(2,'0').split(''); 
+  // split devolve um array
+  
   const [secondLeft, secondRight] = String(seconds).padStart(2,'0').split('');
 
-  useEffect(()=> {
-    if(isActive && time > 0) {
-      countdownTimeout = setTimeout(() => {
-        setTime(time - 1);
-      }, 1000)
-    } else if (isActive && time === 0) {
-      setIsActive(false);
-      setIsFinished(true);
-      startNewChallenge();
-    }
-  }, [isActive, time])
-
-  const startCountdown = useCallback(()=> {
-    setIsActive(true);
-    setIsFinished(false);
-    setIsPaused(false);
-    setTime(inicialTime);
-  }, []);
-
-  const continueCountdown = useCallback(()=> {
-    setIsActive(true);
-    setIsFinished(false);
-    setIsPaused(false);
-  }, []);
-
-  const resetCountdown = useCallback(()=> {
-    setIsActive(false);
-    setIsPaused(false);
-    setTime(inicialTime);
-    clearTimeout(countdownTimeout);
-  }, [time]);
-
-  const pauseCountdown = useCallback(()=> {
-    clearTimeout(countdownTimeout);
-    setIsPaused(true);
-    setIsActive(false);
-  }, [time]);
-
-// funcoes abaixo foram alteradas para useCallBack
-
-// function startCountdown() {
-//   setIsActive(true);
-//   setIsFinished(false);
-//   setIsPaused(false);
-//   setTime(inicialTime);
-// }
-
-// function continueCountdown() {
-//   setIsActive(true);
-//   setIsFinished(false);
-//   setIsPaused(false);
-// }
-
-// function resetCountdown() {
-//   clearTimeout(countdownTimeout);
-//   setIsActive(false);
-//   setTime(inicialTime);
-//   setIsPaused(false);
-// }
-
-
-// function pauseCountdown() {
-//   clearTimeout(countdownTimeout);
-//   setIsPaused(true);
-//   setIsActive(false); 
-// }
 
   return (
     <div>

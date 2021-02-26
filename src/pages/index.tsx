@@ -1,5 +1,7 @@
 import Head from 'next/head'
 
+
+import { CountdownProvider } from '../contexts/CountdownContext'
 import { Countdown } from '../components/Countdown'
 
 import { ExperienceBar } from '../components/ExperienceBar'
@@ -8,17 +10,21 @@ import ChallengeBox from '../components/ChallengeBox'
 import CompletedChallenges from '../components/CompletedChallenges'
 
 import styles from '../styles/pages/Home.module.css'
+import React from 'react'
 
 export default function Home() {
   return (
     
-     <div className={styles.container}>
+  <div className={styles.container}>
     <Head>
     <title>Início | 2Focus</title>
     </Head>
+    
     <ExperienceBar />
 
-    <section>
+
+    <CountdownProvider>
+    <section>     
       <div>
       <Profile />
       <CompletedChallenges />
@@ -26,10 +32,11 @@ export default function Home() {
       </div>
 
       <div>
-      <ChallengeBox />
+      <ChallengeBox /> 
       </div>
-
     </section>
-    </div>
+    </CountdownProvider>
+
+  </div>
   )
 }
