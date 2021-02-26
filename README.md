@@ -2,7 +2,9 @@
 ## Projeto do NLW4 (next level week 4 - rocketseat
 
 
-![](\.readme\2focus_desktop.png)
+<p align="center">
+  <img alt="Sign In" src=".github/2focus_desktop.png" width="100%">
+</p>
 
 Projeto de foco que funde a técnica de pomodoro com a gamificação.
 Consiste em criar recompensas a partir de exercícios para foco de desenvolvedores ou entusiastas de computação e design.
