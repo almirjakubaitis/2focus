@@ -5,9 +5,12 @@
 <p align="center">
   <img alt="Sign In" src=".github/2focus_desktop.png" width="100%">
 </p>
-
 Projeto de foco que funde a técnica de pomodoro com a gamificação.
 Consiste em criar recompensas a partir de exercícios para foco de desenvolvedores ou entusiastas de computação e design.
+
+## Ver aplicação
+
+Acesse: http://airsky.com.br:5080/
 
 ## A Técnica de pomodoro:
 Pomodoro é uma técnica simples que aumenta sua produtividade, sua habilidade de gerenciar tempo e de controlar as distrações.
